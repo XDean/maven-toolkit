@@ -1,0 +1,10 @@
+*.class
+
+hs_err_pid*
+
+.svn/
+.settings/
+target/
+bin/
+doc/
+.idea/
