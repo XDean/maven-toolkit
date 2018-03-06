@@ -1,3 +1,3 @@
-# ${artifactId}
+# ${name}
 
-${artifactId}
+${description}
