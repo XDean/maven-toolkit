@@ -7,7 +7,7 @@
 	<version>${version}</version>
 	<packaging>jar</packaging>
 	<url>https://github.com/XDean/${artifactId}</url>
-  <name>${name}</name>
+	<name>${name}</name>
 	<description>${description}</description>
 
 	<properties>
@@ -134,6 +134,25 @@
 								</goals>
 							</execution>
 						</executions>
+						<configuration>
+							<tags>
+								<tag>
+									<name>apiNote</name>
+									<placement>a</placement>
+									<head>API Note:</head>
+								</tag>
+								<tag>
+									<name>implSpec</name>
+									<placement>a</placement>
+									<head>Implementation Specification:</head>
+								</tag>
+								<tag>
+									<name>implNote</name>
+									<placement>a</placement>
+									<head>Implementation Note:</head>
+								</tag>
+							</tags>
+						</configuration>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
