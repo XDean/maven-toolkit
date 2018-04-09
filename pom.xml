@@ -20,7 +20,8 @@
 		<!-- user -->
 		<user.name>XDean</user.name>
 		<user.email>373216024@qq.com</user.email>
-		<user.url>https://github.com/${user.name}</user.url>
+		<user.domain>https://github.com</user.domain>
+		<user.url>${user.domain}/${user.name}</user.url>
 		<user.timezone>8</user.timezone>
 		<repository.name>${project.artifactId}</repository.name>
 		<repository.url>${user.url}/${repository.name}</repository.url>
