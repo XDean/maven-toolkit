@@ -5,38 +5,49 @@
 	<groupId>com.github.XDean</groupId>
 	<artifactId>oss-parent</artifactId>
 	<version>1.0</version>
-	<packaging>jar</packaging>
-	<url>https://github.com/XDean/oss-parent</url>
+	<packaging>pom</packaging>
+	<url>${repository.url}</url>
 	<name>OSS Parent</name>
 	<description>Sonatype Deploy Parent</description>
 
 	<properties>
+		<!-- base -->
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- user -->
+		<user.name>XDean</user.name>
+		<user.email>373216024@qq.com</user.email>
+		<user.url>https://github.com/${user.name}</user.url>
+		<user.timezone>8</user.timezone>
+		<repository.name>${project.artifactId}</repository.name>
+		<repository.url>${user.url}/${repository.name}</repository.url>
+		<scm.domain>git@github.com</scm.domain>
+		<scm.url>${scm.domain}:${user.name}/${repository.name}.git</scm.url>
+
+		<!-- version -->
+		<version.junit>4.12</version.junit>
+		<version.maven.jacoco>0.8.0</version.maven.jacoco>
+		<version.maven.sonatype>1.6.7</version.maven.sonatype>
+		<version.maven.source>3.0.0</version.maven.source>
+		<version.maven.javadoc>3.0.0</version.maven.javadoc>
+		<version.maven.gpg>1.6</version.maven.gpg>
 	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 
 	<developers>
 		<developer>
-			<name>XDean</name>
-			<email>373216024@qq.com</email>
-			<url>https://github.com/XDean</url>
-			<timezone>8</timezone>
+			<name>${user.name}</name>
+			<email>${user.email}</email>
+			<url>${user.url}</url>
+			<timezone>${user.timezone}</timezone>
 		</developer>
 	</developers>
 
 	<issueManagement>
 		<system>Github Issue</system>
-		<url>https://github.com/XDean/oss-parent/issues</url>
+		<url>${repository.url}/issues</url>
 	</issueManagement>
 
 	<licenses>
@@ -47,9 +58,9 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git@github.com:XDean/oss-parent.git</connection>
-		<developerConnection>scm:git@github.com:XDean/oss-parent.git</developerConnection>
-		<url>git@github.com:XDean/oss-parent.git</url>
+		<connection>scm:${scm.url}</connection>
+		<developerConnection>scm:${scm.url}</developerConnection>
+		<url>${scm.url}</url>
 	</scm>
 
 	<distributionManagement>
@@ -59,31 +70,33 @@
 		</snapshotRepository>
 	</distributionManagement>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-
 	<profiles>
+		<profile>
+			<id>jacoco</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>${version.maven.jacoco}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>report</id>
+								<phase>test</phase>
+								<goals>
+									<goal>report</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>release</id>
 			<distributionManagement>
@@ -101,7 +114,7 @@
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.7</version>
+						<version>${version.maven.sonatype}</version>
 						<extensions>true</extensions>
 						<configuration>
 							<serverId>ossrh</serverId>
@@ -112,7 +125,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>3.0.0</version>
+						<version>${version.maven.source}</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -125,7 +138,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.9.1</version>
+						<version>${version.maven.javadoc}</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -157,7 +170,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
+						<version>${version.maven.gpg}</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
