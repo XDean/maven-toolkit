@@ -31,3 +31,4 @@ nbdist/
 ### other ###
 .svn/
 .*.md.html
+dependency-reduced-pom.xml
