@@ -15,24 +15,29 @@
 		<requiredProperty key="description" />
 	</requiredProperties>
 	<fileSets>
-		<fileSet filtered="true" encoding="UTF-8">
+		<fileSet encoding="UTF-8">
 			<directory>src/main/java</directory>
 		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
+		<fileSet encoding="UTF-8">
 			<directory>src/main/resources</directory>
 		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
+		<fileSet encoding="UTF-8">
 			<directory>src/test/java</directory>
 		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
+		<fileSet encoding="UTF-8">
 			<directory>src/test/resources</directory>
 		</fileSet>
-		<fileSet filtered="false" encoding="UTF-8">
+		<fileSet encoding="UTF-8">
+			<directory>deploy</directory>
+			<includes>
+				<include>*.*</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
 			<directory></directory>
 			<includes>
 				<include>.gitignore</include>
 				<include>.travis.yml</include>
-				<include>codecov.yml</include>
 				<include>LICENSE</include>
 			</includes>
 		</fileSet>
